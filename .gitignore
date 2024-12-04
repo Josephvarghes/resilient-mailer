@@ -38,4 +38,10 @@ pip-selfcheck.json
 # Ignore the structure.txt file
 structure.txt 
 # Ignore Python bytecode directories
-__pycache__/
+__pycache__/ 
+
+# Exclude pytest configuration file
+pytest.ini
+
+# Exclude pytest cache directory
+.pytest_cache/
