@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Email Logs{% endblock %}
+
+{% block content %}
+<div class="email-logs-section mt-4">
+    <h2>Email Logs</h2>
+    <table class="email-logs-table table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Recipient</th>
+                <th>Subject</th>
+                <th>Body</th>
+                <th>Status</th>
+                <th>Provider</th>
+                <th>Error</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ log.recipient }}</td>
+                <td>{{ log.subject }}</td>
+                <td>{{ log.body }}</td>
+                <td>
+                    {% if log.status == 'success' %}
+                    <span class="badge bg-success">{{ log.status }}</span>
+                    {% else %}
+                    <span class="badge bg-danger">{{ log.status }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ log.provider }}</td>
+                <td>{{ log.error or 'N/A' }}</td>
+                <td>{{ log.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

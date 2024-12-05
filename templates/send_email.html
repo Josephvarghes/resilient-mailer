@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Send Email{% endblock %}
+
+{% block header %}Send Email{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flash-messages">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- Email Form -->
+    <form action="/send-email" method="post">
+        <div class="form-group">
+            <label for="recipient">Recipient:</label>
+            <input type="email" id="recipient" name="recipient" required>
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="form-group">
+            <label for="body">Body:</label>
+            <textarea id="body" name="body" rows="5" required></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send Email</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

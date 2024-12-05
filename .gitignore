@@ -44,4 +44,7 @@ __pycache__/
 pytest.ini
 
 # Exclude pytest cache directory
-.pytest_cache/
+.pytest_cache/ 
+
+# Ignore create_db.py file
+create_db.py
